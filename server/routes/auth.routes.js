@@ -14,7 +14,7 @@ const router = express.Router({ mergeParams: true })
 // 4. create users
 // 5 generate tokens
 // 6. validaciya
-
+// в Postmanу http://localhost:8080/api/auth/signUp
 router.post('/signUp', [   // hendler - async (req, res) => {} оборачивае  [в квадратные] и запихиваем chek
 check('email', "Некорректный email").isEmail(),
 check('password', 'Минимальная длина пороля 8 символов').isLength({min: 8}),
@@ -69,7 +69,7 @@ check('password', 'Минимальная длина пороля 8 символ
 // 3. compare hashed password
 // 4. generate token
 // 5. return date
-
+// в Postmanу http://localhost:8080/api/auth/signInWithPassword
 router.post('/signInWithPassword', [
     check('email', 'Email некорректный').normalizeEmail().isEmail(),
     check('password', 'Пароль не может быть пустым').exists(), // exists() - на наличие
