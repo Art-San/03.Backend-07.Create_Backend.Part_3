@@ -3,7 +3,7 @@ const auth = require('../middleware/auth.middleware')
 const Comment = require('../models/Comment')
 const router = express.Router({ mergeParams: true })
 
-// /api/comments   // auth защита авторизации
+///api/comments   // auth защита авторизации
 router
     .route('/')
     .get(auth, async (req, res) => {
@@ -31,13 +31,13 @@ router
         }
     })
 
-//  /api/comment/:id
+// // /api/comment/:id
 
-router.delete('/:commentId', auth, (req, res) => {
+router.delete('/:commentId', auth, async (req, res) => {
     try {
         const { commentId } = req.params
-        // const removedComment = await Comment.find({ _id: commentId })
-        const removedComment = await Comment.findById(commentId)
+        const removedComment = await Comment.find({ _id: commentId })
+        // const removedComment = await Comment.findById(commentId)
 
         if (removedComment.userId.toString() === req.user._id) {
             await removedComment.remove()

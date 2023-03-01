@@ -13,6 +13,3 @@ const shema = new Schema({
 
 module.exports = model('Comment', shema)
 
-content: string
-pageId: 
-userId: string
